@@ -164,84 +164,126 @@
     <div id="chat-widget-root"></div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const responses = {
-                "Como funciona a consultoria jurídica?": "A consultoria jurídica funciona através de uma análise personalizada do seu caso, oferecendo orientações estratégicas e soluções legais.",
-                "Quais áreas do direito você atende?": "Atendemos Direito Civil, Trabalhista, do Consumidor, Penal, Empresarial e de Família.",
-                "Quanto tempo leva para receber um retorno?": "Nosso prazo de resposta é rápido, geralmente dentro de 24 horas.",
-                "Quero entrar em contato": "envie mensagem para o numero de telefone (71) 9 9988-4374"
-            };
+document.addEventListener("DOMContentLoaded", function () {
+    const responses = {
+        "Como funciona a consultoria jurídica?": "A consultoria jurídica funciona através de uma análise personalizada do seu caso, oferecendo orientações estratégicas e soluções legais.",
+        "Quais áreas do direito você atende?": "Atendemos Direito Civil, Trabalhista, do Consumidor, Penal, Empresarial e de Família.",
+        "Quanto tempo leva para receber um retorno?": "Nosso prazo de resposta é rápido, geralmente dentro de 24 horas.",
+        "Quero entrar em contato": "envie mensagem para o numero de telefone (71) 9 9988-4374"
+    };
 
-            const chatButton = document.createElement("button");
-            chatButton.id = "chat-open";
-            chatButton.className = "fixed bottom-4 right-4 bg-blue-900 text-white p-3 rounded-full shadow-lg hover:bg-blue-800 flex items-center justify-center";
-            chatButton.innerHTML = `<i class="ph ph-chat-circle-text text-2xl"></i>`;
-            document.body.appendChild(chatButton);
+    const chatButton = document.createElement("button");
+    chatButton.id = "chat-open";
+    chatButton.className = "fixed bottom-4 right-4 bg-blue-900 text-white p-3 rounded-full shadow-lg hover:bg-blue-800 flex items-center justify-center transition-transform transform hover:scale-110";
+    chatButton.innerHTML = `<i class="ph ph-bell text-2xl"></i>`;
+    document.body.appendChild(chatButton);
 
-            const chatBox = document.createElement("div");
-            chatBox.id = "chat-box";
-            chatBox.className = "fixed bottom-16 right-4 bg-white w-80 h-96 p-4 shadow-lg rounded-lg hidden border border-gray-300 flex flex-col";
-            chatBox.innerHTML = `
-                <div class="flex justify-between items-center border-b pb-2 mb-2">
-                    <h3 class="text-lg font-semibold text-blue-900">Atendimento Online</h3>
-                    <button id="chat-close" class="text-gray-600"><i class="ph ph-x text-xl"></i></button>
-                </div>
-                <div id="chat-content" class="text-gray-700 flex-1 overflow-y-auto p-2 space-y-3 bg-gray-100 rounded-lg flex flex-col">
-                    <div class="bg-white p-2 rounded-lg shadow max-w-max self-start">Olá! Como posso ajudar?</div>
-                    <div id="quick-replies" class="grid grid-cols-1 gap-2 mt-2"></div>
-                </div>
-                <div class="mt-2 border-t pt-2 flex gap-2">
-                    <input type="text" id="chat-text" class="flex-1 border p-2 rounded" placeholder="Digite aqui...">
-                    <button id="chat-send" class="bg-blue-900 text-white p-2 rounded"><i class="ph ph-paper-plane text-xl"></i></button>
-                </div>
-            `;
-            document.body.appendChild(chatBox);
+    const optionsBox = document.createElement("div");
+    optionsBox.id = "options-box";
+    optionsBox.className = "fixed bottom-16 right-4 space-y-3 hidden flex flex-col items-end transition-opacity duration-300 opacity-0";
+    optionsBox.innerHTML = `
+        <button id="chat-option" class="bg-blue-900 text-white p-3 rounded-full shadow-lg hover:bg-blue-800 flex items-center justify-center transition-transform transform hover:scale-110">
+            <i class="ph ph-chat-circle-text text-2xl"></i>
+        </button>
+        <button id="instagram-option" class="bg-pink-500 text-white p-3 rounded-full shadow-lg hover:bg-pink-400 flex items-center justify-center transition-transform transform hover:scale-110">
+            <i class="ph ph-instagram-logo text-2xl"></i>
+        </button>
+        <button id="whatsapp-option" class="bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-400 flex items-center justify-center transition-transform transform hover:scale-110">
+            <i class="ph ph-whatsapp-logo text-2xl"></i>
+        </button>
+    `;
+    document.body.appendChild(optionsBox);
 
-            chatButton.addEventListener("click", function () {
-                chatBox.classList.toggle("hidden");
-            });
+    const chatBox = document.createElement("div");
+    chatBox.id = "chat-box";
+    chatBox.className = "fixed bottom-16 right-4 bg-white w-80 h-96 p-4 shadow-lg rounded-lg hidden border border-gray-300 flex flex-col";
+    chatBox.innerHTML = `
+        <div class="flex justify-between items-center border-b pb-2 mb-2">
+            <h3 class="text-lg font-semibold text-blue-900">Atendimento Online</h3>
+            <button id="chat-close" class="text-gray-600"><i class="ph ph-x text-xl"></i></button>
+        </div>
+        <div id="chat-content" class="text-gray-700 flex-1 overflow-y-auto p-2 space-y-3 bg-gray-100 rounded-lg flex flex-col">
+            <div class="bg-white p-2 rounded-lg shadow max-w-max self-start">Olá! Como posso ajudar?</div>
+            <div id="quick-replies" class="grid grid-cols-1 gap-2 mt-2"></div>
+        </div>
+        <div class="mt-2 border-t pt-2 flex gap-2">
+            <input type="text" id="chat-text" class="flex-1 border p-2 rounded" placeholder="Digite aqui...">
+            <button id="chat-send" class="bg-blue-900 text-white p-2 rounded"><i class="ph ph-paper-plane text-xl"></i></button>
+        </div>
+    `;
+    document.body.appendChild(chatBox);
 
-            document.getElementById("chat-close").addEventListener("click", function () {
-                chatBox.classList.add("hidden");
-            });
+    chatButton.addEventListener("click", function () {
+        if (optionsBox.classList.contains("hidden")) {
+            optionsBox.classList.remove("hidden");
+            setTimeout(() => {
+                optionsBox.classList.remove("opacity-0");
+            }, 10);
+        } else {
+            optionsBox.classList.add("opacity-0");
+            setTimeout(() => {
+                optionsBox.classList.add("hidden");
+            }, 300);
+        }
+    });
 
-            const chatContent = document.getElementById("chat-content");
-            const quickRepliesContainer = document.getElementById("quick-replies");
+    document.getElementById("chat-option").addEventListener("click", function () {
+        optionsBox.classList.add("opacity-0");
+        setTimeout(() => {
+            optionsBox.classList.add("hidden");
+            chatBox.classList.remove("hidden");
+        }, 300);
+    });
 
-            Object.keys(responses).forEach(option => {
-                const button = document.createElement("button");
-                button.className = "bg-gray-200 p-2 rounded text-sm hover:bg-gray-300";
-                button.textContent = option;
-                button.onclick = function () {
-                    handleUserMessage(option);
-                };
-                quickRepliesContainer.appendChild(button);
-            });
+    document.getElementById("instagram-option").addEventListener("click", function () {
+        window.open("https://www.instagram.com/icaro.ms", "_blank");
+    });
 
-            function handleUserMessage(message) {
-                const userMessage = document.createElement("div");
-                userMessage.className = "bg-blue-500 text-white p-2 rounded-lg shadow max-w-max self-end ml-auto";
-                userMessage.textContent = message;
-                chatContent.appendChild(userMessage);
-                document.getElementById("chat-text").value = "";
+    document.getElementById("whatsapp-option").addEventListener("click", function () {
+        window.open("https://wa.me/5571999884374", "_blank");
+    });
 
-                setTimeout(() => {
-                    const botMessage = document.createElement("div");
-                    botMessage.className = "bg-white p-2 rounded-lg shadow max-w-max self-start";
-                    botMessage.textContent = responses[message] || "Desculpe, não entendi sua solicitação.";
-                    chatContent.appendChild(botMessage);
-                    chatContent.scrollTop = chatContent.scrollHeight;
-                }, 1000);
-            }
+    document.getElementById("chat-close").addEventListener("click", function () {
+        chatBox.classList.add("hidden");
+    });
 
-            document.getElementById("chat-send").addEventListener("click", function () {
-                const chatText = document.getElementById("chat-text");
-                const message = chatText.value.trim();
-                if (!message) return;
-                handleUserMessage(message);
-            });
-        });
-    </script>
+    const chatContent = document.getElementById("chat-content");
+    const quickRepliesContainer = document.getElementById("quick-replies");
+
+    Object.keys(responses).forEach(option => {
+        const button = document.createElement("button");
+        button.className = "bg-gray-200 p-2 rounded text-sm hover:bg-gray-300";
+        button.textContent = option;
+        button.onclick = function () {
+            handleUserMessage(option);
+        };
+        quickRepliesContainer.appendChild(button);
+    });
+
+    function handleUserMessage(message) {
+        const userMessage = document.createElement("div");
+        userMessage.className = "bg-blue-500 text-white p-2 rounded-lg shadow max-w-max self-end ml-auto";
+        userMessage.textContent = message;
+        chatContent.appendChild(userMessage);
+        document.getElementById("chat-text").value = "";
+
+        setTimeout(() => {
+            const botMessage = document.createElement("div");
+            botMessage.className = "bg-white p-2 rounded-lg shadow max-w-max self-start";
+            botMessage.textContent = responses[message] || "Desculpe, não entendi sua solicitação.";
+            chatContent.appendChild(botMessage);
+            chatContent.scrollTop = chatContent.scrollHeight;
+        }, 1000);
+    }
+
+    document.getElementById("chat-send").addEventListener("click", function () {
+        const chatText = document.getElementById("chat-text");
+        const message = chatText.value.trim();
+        if (!message) return;
+        handleUserMessage(message);
+    });
+});
+</script>
         
 </body>
 </html>
