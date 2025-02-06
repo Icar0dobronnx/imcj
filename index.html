@@ -6,9 +6,6 @@
     <title>Consultoria Jurídica - Ícaro Magalhães</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="./node_modules/leaflet/dist/leaflet.css">
-    <script src="./node_modules/lodash/lodash.min.js"></script>
-    <script src="./node_modules/leaflet/dist/leaflet.js"></script>
 </head>
 <body class="bg-white text-gray-900">
      <div vw class="enabled">
@@ -31,7 +28,7 @@
             </div>
         </div>
         <nav class="hidden md:flex space-x-6">
-            <a href="#lead-capture" class="text-gray-700 hover:text-blue-900">Início</a>
+            <a href="#inicio" class="text-gray-700 hover:text-blue-900">Início</a>
             <a href="#parceiros" class="text-gray-700 hover:text-blue-900">Escritório Parceiro</a>
             <a href="#especialidades" class="text-gray-700 hover:text-blue-900">Especialidades</a>
             <a href="#relatos" class="text-gray-700 hover:text-blue-900">Relatos</a>
@@ -41,7 +38,7 @@
     </header>
 
     <!-- Captura de Leads -->
-    <section id="lead-capture" class="pt-24 pb-12 px-6 bg-gray-100 flex flex-col md:flex-row items-center">
+    <section id="inicio" class="pt-24 pb-12 px-6 bg-gray-100 flex flex-col md:flex-row items-center">
         <div class="md:w-1/2">
             <h2 class="text-2xl font-bold text-blue-900">Informe seu problema e obtenha ajuda jurídica agora!</h2>
             <p class="mt-2 text-gray-700">Não perca tempo com dúvidas ou incertezas! Receba um atendimento jurídico personalizado e eficaz de forma ágil e descomplicada.</p>
@@ -101,179 +98,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Mapa -->
-    <section id="mapa" class="py-24 px-6 bg-white">
-        <h2 class="text-3xl font-bold text-blue-900 text-center mb-8">Localização dos Escritórios</h2>
-        <div id="hs-change-city-leaflet-wrapper">
-            <div class="mb-4 inline-flex gap-x-1">
-                <nav class="flex gap-x-1 --prevent-on-load-init" role="tablist">
-                    <button type="button" class="hs-tab-active:bg-gray-100 hs-tab-active:hover:bg-gray-100 hs-tab-active:focus:bg-gray-100 hs-tab-active:text-gray-800 dark:hs-tab-active:bg-neutral-700 dark:hs-tab-active:focus:bg-neutral-700 dark:hs-tab-active:hover:bg-neutral-700 dark:hs-tab-active:text-neutral-200 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm text-gray-500 rounded-full hover:text-gray-800 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200 dark:focus:text-neutral-200 active" aria-selected="true" data-hs-tab="London">
-                        London
-                    </button>
-                    <button type="button" class="hs-tab-active:bg-gray-100 hs-tab-active:hover:bg-gray-100 hs-tab-active:focus:bg-gray-100 hs-tab-active:text-gray-800 dark:hs-tab-active:bg-neutral-700 dark:hs-tab-active:focus:bg-neutral-700 dark:hs-tab-active:hover:bg-neutral-700 dark:hs-tab-active:text-neutral-200 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm text-gray-500 rounded-full hover:text-gray-800 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200 dark:focus:text-neutral-200" aria-selected="false" data-hs-tab="Birmingham">
-                        Birmingham
-                    </button>
-                    <button type="button" class="hs-tab-active:bg-gray-100 hs-tab-active:hover:bg-gray-100 hs-tab-active:focus:bg-gray-100 hs-tab-active:text-gray-800 dark:hs-tab-active:bg-neutral-700 dark:hs-tab-active:focus:bg-neutral-700 dark:hs-tab-active:hover:bg-neutral-700 dark:hs-tab-active:text-neutral-200 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm text-gray-500 rounded-full hover:text-gray-800 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200 dark:focus:text-neutral-200" aria-selected="false" data-hs-tab="Leeds">
-                        Leeds
-                    </button>
-                </nav>
-            </div>
-            <div id="hs-change-city-leaflet" class="h-[400px] hs-leaflet z-10"></div>
-        </div>
-    </section>
-
-    <style>
-        .hs-leaflet.leaflet-touch .leaflet-control-layers,
-        .hs-leaflet.leaflet-touch .leaflet-bar {
-            border-width: 0px;
-        }
-
-        .hs-leaflet.leaflet-touch .leaflet-bar a {
-            line-height: 1.5;
-            background-color: rgba(255, 255, 255, .8);
-            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-        }
-
-        .hs-leaflet.leaflet-touch .leaflet-bar a:first-child,
-        .hs-leaflet.leaflet-touch .leaflet-bar a:last-child {
-            border-radius: 8px;
-        }
-
-        .hs-leaflet .leaflet-control-zoom-in,
-        .hs-leaflet .leaflet-control-zoom-out {
-            font-weight: 400;
-            font-size: 18px;
-            color: #1f2937;
-            text-indent: 0px;
-        }
-
-        .hs-leaflet .leaflet-bar {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .hs-leaflet .leaflet-bar a {
-            border-width: 0;
-        }
-
-        .hs-leaflet .leaflet-bar a:hover,
-        .hs-leaflet .leaflet-bar a:focus {
-            background-color: #e5e7eb;
-        }
-
-        .hs-leaflet .leaflet-popup-content-wrapper,
-        .hs-leaflet .leaflet-popup-tip {
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
-
-        .hs-leaflet .leaflet-popup-tip {
-            border-radius: 4px;
-        }
-
-        .hs-leaflet.leaflet-container a.leaflet-popup-close-button {
-            top: -10px;
-            right: -10px;
-            border-radius: 9999px;
-            background-color: #f3f4f6;
-            color: #1f2937;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .hs-leaflet.leaflet-container a.leaflet-popup-close-button:hover {
-            background-color: #f3f4f6;
-        }
-
-        .hs-leaflet-unstyled-popover .leaflet-popup-content-wrapper {
-            display: flex;
-        }
-
-        .hs-leaflet-unstyled-popover .leaflet-popup-content {
-            padding: 0;
-            margin: 0;
-            background: none;
-            line-height: normal;
-            border-radius: 0;
-            font-size: inherit;
-            min-height: auto;
-        }
-    </style>
-
-    <script>
-        window.addEventListener('load', () => {
-            (function () {
-                const customSvgIcon = `
-                    data:image/svg+xml,
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-                `;
-                const mapWrapper = document.querySelector('#hs-change-city-leaflet-wrapper');
-                const tabs = mapWrapper.querySelectorAll('[role="tablist"] [data-hs-tab]');
-                const map = L.map('hs-change-city-leaflet', {
-                    center: [51.5074, -0.1278],
-                    zoom: 14,
-                    maxBounds: [
-                        [40, -10],
-                        [60, 10]
-                    ],
-                    maxBoundsViscosity: 1.0
-                });
-
-                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                    maxZoom: 19,
-                    minZoom: 2,
-                    attribution: '© <a href="https://carto.com/attributions">CARTO</a>'
-                }).addTo(map);
-
-                const customIcon = L.icon({
-                    iconUrl: customSvgIcon,
-                    iconSize: [32, 32],
-                    iconAnchor: [16, 32],
-                    popupAnchor: [0, -32]
-                });
-
-                function createPopupContent(city, description) {
-                    return `
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-800 dark:text-neutral-200">${city}</h3>
-                            <div class="text-sm text-gray-500 dark:text-neutral-500">${description}</div>
-                        </div>
-                    `;
-                }
-
-                const cities = [
-                    { coords: [51.5074, -0.1278], city: 'London', description: 'Capital of the United Kingdom.' },
-                    { coords: [52.4862, -1.8904], city: 'Birmingham', description: 'A major city in England’s West Midlands region.' },
-                    { coords: [53.8008, -1.5491], city: 'Leeds', description: 'A vibrant city in West Yorkshire, England.' }
-                ];
-
-                cities.forEach(({ coords, city, description }) => {
-                    L.marker(coords, { icon: customIcon })
-                        .bindPopup(createPopupContent(city, description))
-                        .addTo(map);
-                });
-
-                function changeMapCenter(cityName) {
-                    const selectedCity = cities.find(city => city.city === cityName);
-
-                    if (selectedCity) {
-                        map.setView(selectedCity.coords, 14);
-                    }
-                }
-
-                tabs.forEach((city) => {
-                    city.addEventListener('click', () => {
-                        const cityName = city.getAttribute('data-hs-tab');
-
-                        Array.from(tabs).filter((el) => el !== city).forEach((city) => city.classList.remove('active'));
-                        city.classList.add('active');
-                        changeMapCenter(cityName);
-                    });
-                });
-            })();
-        });
-    </script>
 
     <!-- Relatos de Clientes -->
     <section id="relatos" class="py-16 px-6 bg-white text-center">
