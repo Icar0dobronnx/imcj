@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultoria Jurídica - Ícaro Magalhães</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="./node_modules/leaflet/dist/leaflet.css">
+    <script src="./node_modules/lodash/lodash.min.js"></script>
+    <script src="./node_modules/leaflet/dist/leaflet.js"></script>
+</head>
+<body class="bg-white text-gray-900">
+     <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white/70 backdrop-blur-lg shadow-md p-4 flex justify-between items-center z-50">
+        <div class="flex items-center space-x-3">
+            <img src="Logo light.png" alt="Logo" class="h-12">
+            <div>
+                <h1 class="text-xl font-bold text-blue-900">Ícaro Magalhães</h1>
+                <p class="text-sm text-gray-600">Consultoria Jurídica</p>
+            </div>
+        </div>
+        <nav class="hidden md:flex space-x-6">
+            <a href="#lead-capture" class="text-gray-700 hover:text-blue-900">Início</a>
+            <a href="#parceiros" class="text-gray-700 hover:text-blue-900">Escritório Parceiro</a>
+            <a href="#especialidades" class="text-gray-700 hover:text-blue-900">Especialidades</a>
+            <a href="#relatos" class="text-gray-700 hover:text-blue-900">Relatos</a>
+            <a href="#perguntas" class="text-gray-700 hover:text-blue-900">Perguntas frequentes</a>
+        </nav>
+        <a href="https://wa.me/5571999884374" target="_blank" class="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-800">Contato</a>
+    </header>
+
+    <!-- Captura de Leads -->
+    <section id="lead-capture" class="pt-24 pb-12 px-6 bg-gray-100 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2">
+            <h2 class="text-2xl font-bold text-blue-900">Informe seu problema e obtenha ajuda jurídica agora!</h2>
+            <p class="mt-2 text-gray-700">Não perca tempo com dúvidas ou incertezas! Receba um atendimento jurídico personalizado e eficaz de forma ágil e descomplicada.</p>
+            <ul class="mt-4 text-gray-700">
+                <li>✔️ Resposta rápida</li>
+                <li>✔️ Consultoria</li>
+                <li>✔️ Atendimento</li>
+            </ul>
+        </div>
+        <form class="md:w-1/2 bg-white p-6 rounded-lg shadow-lg mt-6 md:mt-0">
+            <input type="text" placeholder="Nome" class="w-full p-2 mb-3 border border-gray-300 rounded">
+            <input type="text" placeholder="Sobrenome" class="w-full p-2 mb-3 border border-gray-300 rounded">
+            <input type="email" placeholder="E-mail" class="w-full p-2 mb-3 border border-gray-300 rounded">
+            <input type="tel" placeholder="Telefone" class="w-full p-2 mb-3 border border-gray-300 rounded">
+            <textarea placeholder="Relate seu problema" class="w-full p-2 border border-gray-300 rounded h-32 resize-none"></textarea>
+            <button class="w-full bg-blue-900 text-white p-2 mt-4 rounded hover:bg-blue-800">Enviar</button>
+        </form>
+    </section>
+
+    <!-- Escritórios Parceiros -->
+    <section id="parceiros" class="py-12 px-6 text-center bg-white">
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">Escritório Parceiro</h2>
+        <div class="flex justify-center space-x-6">
+        <!--    <img src="parceiro1.png" alt="Parceiro 1" class="h-20 transition-transform transform hover:scale-110"> -->
+            <img src="LOGO mfs.png" alt="Parceiro 2" class="h-20 transition-transform transform hover:scale-110">
+          <!--  <img src="parceiro3.png" alt="Parceiro 3" class="h-20 transition-transform transform hover:scale-110">  -->
+        </div>
+    </section>
+
+    <!-- Especialidades -->
+    <section id="especialidades" class="py-24 px-6 bg-gray-100">
+        <h2 class="text-3xl font-bold text-blue-900 text-center mb-8">Áreas de Especialização</h2>
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="bg-white p-10 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                <h3 class="font-bold text-xl text-blue-900">Direito Civil</h3>
+                <p class="text-gray-700 mt-2">Defendemos seus direitos em contratos, indenizações, posse e propriedade.</p>
+            </div>
+            <div class="bg-white p-10 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                <h3 class="font-bold text-xl text-blue-900">Direito Trabalhista</h3>
+                <p class="text-gray-700 mt-2">Defesa de trabalhadores em rescisões e questões do trabalho.</p>
+            </div>
+            <div class="bg-white p-10 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                <h3 class="font-bold text-xl text-blue-900">Direito do Consumidor</h3>
+                <p class="text-gray-700 mt-2">Protegemos seus direitos contra abusos de empresas.</p>
+            </div>
+            <div class="bg-white p-10 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                <h3 class="font-bold text-xl text-blue-900">Direito Penal</h3>
+                <p class="text-gray-700 mt-2">Defesa estratégica em acusações criminais.</p>
+            </div>
+            <div class="bg-white p-10 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                <h3 class="font-bold text-xl text-blue-900">Direito Empresarial</h3>
+                <p class="text-gray-700 mt-2">Assessoria jurídica desde a abertura até a gestão empresarial.</p>
+            </div>
+            <div class="bg-white p-10 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                <h3 class="font-bold text-xl text-blue-900">Direito de Família</h3>
+                <p class="text-gray-700 mt-2">Atuação em divórcios, guarda de filhos e partilha de bens.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa -->
+    <section id="mapa" class="py-24 px-6 bg-white">
+        <h2 class="text-3xl font-bold text-blue-900 text-center mb-8">Localização dos Escritórios</h2>
+        <div id="hs-change-city-leaflet-wrapper">
+            <div class="mb-4 inline-flex gap-x-1">
+                <nav class="flex gap-x-1 --prevent-on-load-init" role="tablist">
+                    <button type="button" class="hs-tab-active:bg-gray-100 hs-tab-active:hover:bg-gray-100 hs-tab-active:focus:bg-gray-100 hs-tab-active:text-gray-800 dark:hs-tab-active:bg-neutral-700 dark:hs-tab-active:focus:bg-neutral-700 dark:hs-tab-active:hover:bg-neutral-700 dark:hs-tab-active:text-neutral-200 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm text-gray-500 rounded-full hover:text-gray-800 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200 dark:focus:text-neutral-200 active" aria-selected="true" data-hs-tab="London">
+                        London
+                    </button>
+                    <button type="button" class="hs-tab-active:bg-gray-100 hs-tab-active:hover:bg-gray-100 hs-tab-active:focus:bg-gray-100 hs-tab-active:text-gray-800 dark:hs-tab-active:bg-neutral-700 dark:hs-tab-active:focus:bg-neutral-700 dark:hs-tab-active:hover:bg-neutral-700 dark:hs-tab-active:text-neutral-200 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm text-gray-500 rounded-full hover:text-gray-800 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200 dark:focus:text-neutral-200" aria-selected="false" data-hs-tab="Birmingham">
+                        Birmingham
+                    </button>
+                    <button type="button" class="hs-tab-active:bg-gray-100 hs-tab-active:hover:bg-gray-100 hs-tab-active:focus:bg-gray-100 hs-tab-active:text-gray-800 dark:hs-tab-active:bg-neutral-700 dark:hs-tab-active:focus:bg-neutral-700 dark:hs-tab-active:hover:bg-neutral-700 dark:hs-tab-active:text-neutral-200 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm text-gray-500 rounded-full hover:text-gray-800 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200 dark:focus:text-neutral-200" aria-selected="false" data-hs-tab="Leeds">
+                        Leeds
+                    </button>
+                </nav>
+            </div>
+            <div id="hs-change-city-leaflet" class="h-[400px] hs-leaflet z-10"></div>
+        </div>
+    </section>
+
+    <style>
+        .hs-leaflet.leaflet-touch .leaflet-control-layers,
+        .hs-leaflet.leaflet-touch .leaflet-bar {
+            border-width: 0px;
+        }
+
+        .hs-leaflet.leaflet-touch .leaflet-bar a {
+            line-height: 1.5;
+            background-color: rgba(255, 255, 255, .8);
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        }
+
+        .hs-leaflet.leaflet-touch .leaflet-bar a:first-child,
+        .hs-leaflet.leaflet-touch .leaflet-bar a:last-child {
+            border-radius: 8px;
+        }
+
+        .hs-leaflet .leaflet-control-zoom-in,
+        .hs-leaflet .leaflet-control-zoom-out {
+            font-weight: 400;
+            font-size: 18px;
+            color: #1f2937;
+            text-indent: 0px;
+        }
+
+        .hs-leaflet .leaflet-bar {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .hs-leaflet .leaflet-bar a {
+            border-width: 0;
+        }
+
+        .hs-leaflet .leaflet-bar a:hover,
+        .hs-leaflet .leaflet-bar a:focus {
+            background-color: #e5e7eb;
+        }
+
+        .hs-leaflet .leaflet-popup-content-wrapper,
+        .hs-leaflet .leaflet-popup-tip {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        .hs-leaflet .leaflet-popup-tip {
+            border-radius: 4px;
+        }
+
+        .hs-leaflet.leaflet-container a.leaflet-popup-close-button {
+            top: -10px;
+            right: -10px;
+            border-radius: 9999px;
+            background-color: #f3f4f6;
+            color: #1f2937;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .hs-leaflet.leaflet-container a.leaflet-popup-close-button:hover {
+            background-color: #f3f4f6;
+        }
+
+        .hs-leaflet-unstyled-popover .leaflet-popup-content-wrapper {
+            display: flex;
+        }
+
+        .hs-leaflet-unstyled-popover .leaflet-popup-content {
+            padding: 0;
+            margin: 0;
+            background: none;
+            line-height: normal;
+            border-radius: 0;
+            font-size: inherit;
+            min-height: auto;
+        }
+    </style>
+
+    <script>
+        window.addEventListener('load', () => {
+            (function () {
+                const customSvgIcon = `
+                    data:image/svg+xml,
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                `;
+                const mapWrapper = document.querySelector('#hs-change-city-leaflet-wrapper');
+                const tabs = mapWrapper.querySelectorAll('[role="tablist"] [data-hs-tab]');
+                const map = L.map('hs-change-city-leaflet', {
+                    center: [51.5074, -0.1278],
+                    zoom: 14,
+                    maxBounds: [
+                        [40, -10],
+                        [60, 10]
+                    ],
+                    maxBoundsViscosity: 1.0
+                });
+
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                    maxZoom: 19,
+                    minZoom: 2,
+                    attribution: '© <a href="https://carto.com/attributions">CARTO</a>'
+                }).addTo(map);
+
+                const customIcon = L.icon({
+                    iconUrl: customSvgIcon,
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 32],
+                    popupAnchor: [0, -32]
+                });
+
+                function createPopupContent(city, description) {
+                    return `
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-neutral-200">${city}</h3>
+                            <div class="text-sm text-gray-500 dark:text-neutral-500">${description}</div>
+                        </div>
+                    `;
+                }
+
+                const cities = [
+                    { coords: [51.5074, -0.1278], city: 'London', description: 'Capital of the United Kingdom.' },
+                    { coords: [52.4862, -1.8904], city: 'Birmingham', description: 'A major city in England’s West Midlands region.' },
+                    { coords: [53.8008, -1.5491], city: 'Leeds', description: 'A vibrant city in West Yorkshire, England.' }
+                ];
+
+                cities.forEach(({ coords, city, description }) => {
+                    L.marker(coords, { icon: customIcon })
+                        .bindPopup(createPopupContent(city, description))
+                        .addTo(map);
+                });
+
+                function changeMapCenter(cityName) {
+                    const selectedCity = cities.find(city => city.city === cityName);
+
+                    if (selectedCity) {
+                        map.setView(selectedCity.coords, 14);
+                    }
+                }
+
+                tabs.forEach((city) => {
+                    city.addEventListener('click', () => {
+                        const cityName = city.getAttribute('data-hs-tab');
+
+                        Array.from(tabs).filter((el) => el !== city).forEach((city) => city.classList.remove('active'));
+                        city.classList.add('active');
+                        changeMapCenter(cityName);
+                    });
+                });
+            })();
+        });
+    </script>
+
+    <!-- Relatos de Clientes -->
+    <section id="relatos" class="py-16 px-6 bg-white text-center">
+        <h2 class="text-3xl font-bold text-blue-900 mb-8">Relatos de Clientes</h2>
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="p-10 bg-gray-100 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                <img src="cliente-allice.jpeg" alt="Cliente 1" class="h-20 w-20 rounded-full mx-auto mb-4">
+                <p class="text-gray-700 italic">“Ícaro resolveu meu caso com muita rapidez e profissionalismo. Recomendo fortemente!”</p>
+            </div>
+            <div class="p-10 bg-gray-100 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                <img src="cliente2.jpg" alt="Cliente 2" class="h-20 w-20 rounded-full mx-auto mb-4">
+                <p class="text-gray-700 italic">“Fui atendido com excelência e tive um ótimo resultado no meu processo. Obrigado!”</p>
+            </div>
+            <div class="p-10 bg-gray-100 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                <img src="cliente3.jpg" alt="Cliente 3" class="h-20 w-20 rounded-full mx-auto mb-4">
+                <p class="text-gray-700 italic">“Ótimo profissional! Me ajudou muito com minha questão jurídica.”</p>
+            </div>
+        </div>
+    </section>
+    <section id="perguntas"  class="py-20 px-6 bg-gray-100">
+        <h2 class="text-2xl font-bold text-blue-900 text-center mb-6">Perguntas Recentes</h2>
+        <div class="max-w-2xl mx-auto">
+            <div class="bg-white shadow-md rounded-lg">
+                <div class="border-b" onclick="toggleAnswer(1)">
+                    <button class="w-full text-left p-4 font-semibold text-blue-900">Como funciona a consultoria jurídica?</button>
+                    <p id="answer1" class="hidden p-4 text-gray-700">A consultoria jurídica funciona através de uma análise personalizada do seu caso, oferecendo orientações estratégicas e soluções legais.</p>
+                </div>
+                <div class="border-b" onclick="toggleAnswer(2)">
+                    <button class="w-full text-left p-4 font-semibold text-blue-900">Quais áreas do direito você atende?</button>
+                    <p id="answer2" class="hidden p-4 text-gray-700">Atendemos Direito Civil, Trabalhista, do Consumidor, Penal, Empresarial e de Família.</p>
+                </div>
+                <div class="border-b" onclick="toggleAnswer(3)">
+                    <button class="w-full text-left p-4 font-semibold text-blue-900">Quanto tempo leva para receber um retorno?</button>
+                    <p id="answer3" class="hidden p-4 text-gray-700">Nosso prazo de resposta é rápido, geralmente dentro de 24 horas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleAnswer(id) {
+            document.getElementById(`answer${id}`).classList.toggle("hidden");
+        }
+    </script>
+
+    <!-- Rodapé -->
+    <footer class="bg-blue-900 text-white p-6 flex flex-col items-center">
+        <div class="flex justify-between w-full max-w-4xl items-center mb-4">
+            <div class="flex items-center space-x-3">
+                <img src="Logo light.png" alt="Logo" class="h-12">
+                <div>
+                    <h1 class="text-xl font-bold">Ícaro Magalhães</h1>
+                    <p class="text-sm">Consultoria Jurídica</p>
+                </div>
+            </div>
+            <div class="flex space-x-4">
+                <a href="https://www.instagram.com/icaro.ms" target="_blank" class="text-white text-2xl">
+                    <i class="ph ph-instagram"></i>
+                </a>
+            </div>
+        </div>
+        <p>&copy; 2024 Ícaro Magalhães - Consultoria Jurídica. Todos os direitos reservados.</p>
+    </footer>
+    <div id="chat-widget-root"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const responses = {
+                "Como funciona a consultoria jurídica?": "A consultoria jurídica funciona através de uma análise personalizada do seu caso, oferecendo orientações estratégicas e soluções legais.",
+                "Quais áreas do direito você atende?": "Atendemos Direito Civil, Trabalhista, do Consumidor, Penal, Empresarial e de Família.",
+                "Quanto tempo leva para receber um retorno?": "Nosso prazo de resposta é rápido, geralmente dentro de 24 horas.",
+                "Quero entrar em contato": "envie mensagem para o numero de telefone (71) 9 9988-4374"
+            };
+
+            const chatButton = document.createElement("button");
+            chatButton.id = "chat-open";
+            chatButton.className = "fixed bottom-4 right-4 bg-blue-900 text-white p-3 rounded-full shadow-lg hover:bg-blue-800 flex items-center justify-center";
+            chatButton.innerHTML = `<i class="ph ph-chat-circle-text text-2xl"></i>`;
+            document.body.appendChild(chatButton);
+
+            const chatBox = document.createElement("div");
+            chatBox.id = "chat-box";
+            chatBox.className = "fixed bottom-16 right-4 bg-white w-80 h-96 p-4 shadow-lg rounded-lg hidden border border-gray-300 flex flex-col";
+            chatBox.innerHTML = `
+                <div class="flex justify-between items-center border-b pb-2 mb-2">
+                    <h3 class="text-lg font-semibold text-blue-900">Atendimento Online</h3>
+                    <button id="chat-close" class="text-gray-600"><i class="ph ph-x text-xl"></i></button>
+                </div>
+                <div id="chat-content" class="text-gray-700 flex-1 overflow-y-auto p-2 space-y-3 bg-gray-100 rounded-lg flex flex-col">
+                    <div class="bg-white p-2 rounded-lg shadow max-w-max self-start">Olá! Como posso ajudar?</div>
+                    <div id="quick-replies" class="grid grid-cols-1 gap-2 mt-2"></div>
+                </div>
+                <div class="mt-2 border-t pt-2 flex gap-2">
+                    <input type="text" id="chat-text" class="flex-1 border p-2 rounded" placeholder="Digite aqui...">
+                    <button id="chat-send" class="bg-blue-900 text-white p-2 rounded"><i class="ph ph-paper-plane text-xl"></i></button>
+                </div>
+            `;
+            document.body.appendChild(chatBox);
+
+            chatButton.addEventListener("click", function () {
+                chatBox.classList.toggle("hidden");
+            });
+
+            document.getElementById("chat-close").addEventListener("click", function () {
+                chatBox.classList.add("hidden");
+            });
+
+            const chatContent = document.getElementById("chat-content");
+            const quickRepliesContainer = document.getElementById("quick-replies");
+
+            Object.keys(responses).forEach(option => {
+                const button = document.createElement("button");
+                button.className = "bg-gray-200 p-2 rounded text-sm hover:bg-gray-300";
+                button.textContent = option;
+                button.onclick = function () {
+                    handleUserMessage(option);
+                };
+                quickRepliesContainer.appendChild(button);
+            });
+
+            function handleUserMessage(message) {
+                const userMessage = document.createElement("div");
+                userMessage.className = "bg-blue-500 text-white p-2 rounded-lg shadow max-w-max self-end ml-auto";
+                userMessage.textContent = message;
+                chatContent.appendChild(userMessage);
+                document.getElementById("chat-text").value = "";
+
+                setTimeout(() => {
+                    const botMessage = document.createElement("div");
+                    botMessage.className = "bg-white p-2 rounded-lg shadow max-w-max self-start";
+                    botMessage.textContent = responses[message] || "Desculpe, não entendi sua solicitação.";
+                    chatContent.appendChild(botMessage);
+                    chatContent.scrollTop = chatContent.scrollHeight;
+                }, 1000);
+            }
+
+            document.getElementById("chat-send").addEventListener("click", function () {
+                const chatText = document.getElementById("chat-text");
+                const message = chatText.value.trim();
+                if (!message) return;
+                handleUserMessage(message);
+            });
+        });
+    </script>
+        
+</body>
+</html>
